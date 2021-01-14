@@ -12,10 +12,18 @@ body {
   justify-content: center;
 }
 
+.flex {
+  display: flex;
+}
+
+.f-column {
+  flex-direction: column;
+}
+
 .flex-center {
   display: flex;
-  justify-content: space-between;
-  // align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 #app {
@@ -70,6 +78,43 @@ body {
   #weather-container {
     color: $primary-color;
     width: 100%;
-    margin-top: 3rem;
+    margin-top: 2rem;
+
+    .city-temp {
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+
+      #city {
+        font-size: 2rem;
+        text-align: center;
+      }
+      #country {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+      #temp {
+        font-size: 5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+    }
+    .additional-weather {
+      justify-content: space-around;
+
+      #min,
+      #max,
+      #feels-temp {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    #photo-container {
+      #weather {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+      }
+    }
   }
 }

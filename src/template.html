@@ -10,21 +10,38 @@
     ></script>
   </head>
   <body>
-    <div id="app">
-      <div class="flex-center input-container">
-        <input type="search" id="city-search" aria-label="Search" />
-        <button type="button" id="search-btn">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
+    <main id="app">
+      <section class="flex-center input-container">
+        <form class="flex-center">
+          <input
+            spellcheck="false"
+            autocomplete="off"
+            type="search"
+            id="city-search"
+            aria-label="Search"
+          />
+          <button type="submit" id="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </section>
 
-      <div id="weather-container">
-        <div id="city">City</div>
-        <div id="temp">Temperature</div>
-        <div id="minmax">Min: Max:</div>
-        <div id="feels-temp">Feels like:</div>
-        <div id="humidity">Humidity:</div>
+      <section id="weather-container">
+        <div class="flex f-column city-temp">
+          <div id="city"></div>
+          <div id="country"></div>
+          <div id="photo-container" class="flex-center">
+            <img id="weather" alt="weather"></img>
+          </div>
+          <div id="temp"></div>
+        </div>
+        <div class="flex additional-weather">
+          <div id="feels-temp"></div>
+          <div id="humidity"></div>
+        </div>
+
       </div>
-    </div>
+      </section>
+    </main>
   </body>
 </html>

@@ -6,12 +6,12 @@ function getWeatherDataFromCity(city) {
     return Promise.reject(`Error: ${response.status}.`);
   }
 
-  const data = fetch(url, { mode: "cors" }) // get http data (Response object)
+  const data = fetch(url, { mode: "cors", credentials: "omit" }) // get http data (Response object)
     .then((response) => {
       return response.ok ? response.json() : not2xxresponse(response);
     })
     .catch((err) => console.log(err));
-  console.log(data);
+
   return data;
 }
 

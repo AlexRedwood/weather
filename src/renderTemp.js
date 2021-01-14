@@ -1,3 +1,8 @@
+import countries from "i18n-iso-countries";
+import domElements from "./domElts.js";
+
+countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
+
 const capitalize = (text) => {
   if (typeof text !== "string") return "";
   return text.charAt(0).toUpperCase() + text.slice(1);
@@ -7,38 +12,35 @@ function applyDegreeAndRound(temperature) {
   return `${Math.round(temperature)} \u00B0C`;
 }
 
-function renderNotFound() {
-  const city = document.getElementById("city");
-  const temp = document.getElementById("temp");
-  const minmax = document.getElementById("minmax");
-  const feelsTemp = document.getElementById("feels-temp");
-  const humidity = document.getElementById("humidity");
+function changeDisplay(elements, option) {
+  // params array and string
+  elements.forEach((element) => {
+    element.style.display = `${option}`;
+  });
+}
 
-  city.textContent = "City is not found";
-  temp.textContent = "";
-  minmax.textContent = "";
-  feelsTemp.textContent = "";
-  humidity.textContent = "";
+function renderNotFound() {
+  changeDisplay(
+    [domElements.country, domElements.additionalWeather, domElements.temp],
+    "none"
+  );
+
+  domElements.city.textContent = "City is not found";
 }
 
 function renderTemp(data) {
   if (data === undefined) return renderNotFound();
-  // render temperature from open weather api data
-  const city = document.getElementById("city");
-  const temp = document.getElementById("temp");
-  const minmax = document.getElementById("minmax");
-  const feelsTemp = document.getElementById("feels-temp");
-  const humidity = document.getElementById("humidity");
 
-  city.textContent = capitalize(data.name);
-  temp.textContent = applyDegreeAndRound(data.main.temp);
-  minmax.textContent = `Min: ${applyDegreeAndRound(
-    data.main.temp_min
-  )} Max: ${applyDegreeAndRound(data.main.temp_max)}`;
-  feelsTemp.textContent = `Feels like: ${applyDegreeAndRound(
+  domElements.additionalWeather.style.display = "flex";
+  changeDisplay([domElements.country, domElements.temp], "block");
+
+  domElements.city.textContent = capitalize(data.name);
+  domElements.country.textContent = countries.getName(data.sys.country, "en");
+  domElements.temp.textContent = applyDegreeAndRound(data.main.temp);
+  domElements.feelsTemp.textContent = `Feels like: ${applyDegreeAndRound(
     data.main.feels_like
   )}`;
-  humidity.textContent = `Humidity: ${data.main.humidity} %`;
+  domElements.humidity.textContent = `Humidity: ${data.main.humidity} %`;
 }
 
-export { renderTemp };
+export { renderTemp, renderNotFound };
