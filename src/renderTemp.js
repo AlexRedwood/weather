@@ -21,7 +21,13 @@ function changeDisplay(elements, option) {
 
 function renderNotFound() {
   changeDisplay(
-    [domElements.country, domElements.additionalWeather, domElements.temp],
+    [
+      domElements.country,
+      domElements.additionalWeather,
+      domElements.temp,
+      domElements.description,
+      domElements.photoContainer,
+    ],
     "none"
   );
 
@@ -30,13 +36,22 @@ function renderNotFound() {
 
 function renderTemp(data) {
   if (data === undefined) return renderNotFound();
-
+  console.log(data);
   domElements.additionalWeather.style.display = "flex";
-  changeDisplay([domElements.country, domElements.temp], "block");
+  changeDisplay(
+    [
+      domElements.country,
+      domElements.temp,
+      domElements.description,
+      domElements.photoContainer,
+    ],
+    "block"
+  );
 
   domElements.city.textContent = capitalize(data.name);
   domElements.country.textContent = countries.getName(data.sys.country, "en");
   domElements.temp.textContent = applyDegreeAndRound(data.main.temp);
+  domElements.description.textContent = capitalize(data.weather[0].description);
   domElements.feelsTemp.textContent = `Feels like: ${applyDegreeAndRound(
     data.main.feels_like
   )}`;

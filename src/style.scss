@@ -3,6 +3,11 @@
 
 $primary-color: rgb(228, 228, 228);
 
+html {
+  @media (min-width: 700px) {
+    font-size: 1.3rem;
+  }
+}
 body {
   background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/noisy_net.png");
   background-repeat: repeat;
@@ -78,7 +83,13 @@ body {
   #weather-container {
     color: $primary-color;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-height: 768px) {
+      margin-top: 2rem;
+    }
 
     .city-temp {
       align-items: center;
@@ -91,29 +102,60 @@ body {
       }
       #country {
         font-size: 1rem;
-        margin-bottom: 1rem;
       }
       #temp {
         font-size: 5rem;
         text-align: center;
+      }
+      #description {
         margin-bottom: 1rem;
+
+        @media (min-height: 768px) {
+          margin-bottom: 2rem;
+        }
       }
     }
     .additional-weather {
-      justify-content: space-around;
+      justify-content: center;
 
-      #min,
-      #max,
       #feels-temp {
         margin-bottom: 0.5rem;
+        margin-right: 0.7rem;
+
+        @media (min-width: 300px) {
+          margin-right: 2rem;
+        }
+
+        @media (min-width: 768px) {
+          margin-right: 4rem;
+        }
       }
     }
 
     #photo-container {
       #weather {
-        width: 120px;
-        height: 120px;
+        width: 160px;
+        height: 160px;
         border-radius: 50%;
+        margin-bottom: 1rem;
+
+        @media (min-height: 768px) {
+          margin-bottom: 2rem;
+          width: 220px;
+          height: 220px;
+        }
+
+        @media (min-width: 500px) {
+          margin-bottom: 2rem;
+          width: 250px;
+          height: 250px;
+        }
+
+        @media (min-width: 768px) {
+          margin-bottom: 2rem;
+          width: 320px;
+          height: 320px;
+        }
       }
     }
   }

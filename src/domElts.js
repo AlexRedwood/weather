@@ -5,4 +5,6 @@ export default {
   feelsTemp: document.getElementById("feels-temp"),
   additionalWeather: document.getElementsByClassName("additional-weather")[0],
   humidity: document.getElementById("humidity"),
+  description: document.getElementById("description"),
+  photoContainer: document.getElementById("photo-container"),
 };
