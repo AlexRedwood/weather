@@ -36,7 +36,7 @@ function renderNotFound() {
 
 function renderTemp(data) {
   if (data === undefined) return renderNotFound();
-  console.log(data);
+
   domElements.additionalWeather.style.display = "flex";
   changeDisplay(
     [
