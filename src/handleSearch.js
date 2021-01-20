@@ -1,9 +1,10 @@
-import { renderWeather } from "./renderGif";
+import { renderWeather } from "./renderWeather";
+import getData from "./getData";
 
 function handleSearch(event) {
   const input = document.getElementById("city-search");
   const city = input.value;
-  renderWeather(city);
+  renderWeather(getData(city));
 
   event.preventDefault();
 }
